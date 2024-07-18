@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+
+    </title>
+    <style>
+        body {
+            height: 300px;
+        }
+
+        td {
+            background-color: palevioletred;
+
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        a {
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .register {
+            background-color: crimson;
+        }
+
+        form {
+            background-color: darksalmon;
+        }
+    </style>
+    <script type="text/javascript">
+        var divs = new Array();
+        divs[0] = "errName"
+        divs[1] = "errMail"
+        divs[2] = "errPassword"
+        divs[3] = "errConfirm"
+        divs[4] = "errSubmit"
+
+        function validate() {
+            var inputs = new Array();
+            inputs[0] = document.getElementById('name').value;
+            inputs[1] = document.getElementById('email').value;
+            inputs[2] = document.getElementById('password').value;
+            inputs[3] = document.getElementById('confirmPassword').value;
+
+            var errors = new Array();
+            errors[0] = "<span style='color:red;'>please enter your name!</span>"
+            errors[1] = "<span style='color:red;'>please enter your email!</span>"
+            errors[2] = "<span style='color:red;'>please enter your password!</span>"
+            errors[3] = "<span style='color:red;'>please confirm your password!</span>"
+
+            for (i in inputs) {
+                var div = divs[i];
+                var errMessage = errors[i];
+                if (inputs[i] == "")
+                    document.getElementById(div).innerHTML = errMessage;
+
+                else if (i == 1) {
+                    var atpos = inputs[i].indexOf("@");
+                    var dotpos = inputs[i].lastIndexOf(".");
+                    if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= inputs[i].length)
+                        document.getElementById(div).innerHTML = "<span style='color: red'>Enter a valid email address!</span>";
+                    else
+                        document.getElementById(div).innerHTML = "OK!";
+                }
+                else if (i == 3) {
+                    var first = document.getElementById(password).value;
+                    var second = document.getElementById(confirmPassword).value;
+                    if (second != first)
+                        document.getElementById(div).innerHTML = "<span style='collor:red;'>your passwords don't match!</span>"
+                    else
+                        document.getElementById(div).innerHTML = "OK!";
+                }
+                else
+                    document.getElementById(div).innerHTML = "OK!";
+
+            }
+
+        }
+        function finalValidate() {
+            var count = 0;
+            for (i = 0; i < 4; i++) {
+                var div = divs[i];
+                if (document.getElementById(div).innerHTML == "OK!")
+                    count = count + 1;
+            }
+            if (count == 4)
+                document.getElementById("errSubmit").innerHTML = "All the data you entered is correct!!!";
+        }
+    </script>
+</head>
+
+<body>
+    <div style="height: 100em">
+        <table border="1" style="width: 100%;">
+            <tr>
+                <td colspan="2">
+                    <ul style="list-style:none; text-align: center;">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Login</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td class="register">
+                    <h1>Login</h1>
+                    <form action="#" method="get">
+                        <fieldset>
+                            <legend>form</legend>
+                            <table>
+
+                                <tr>
+                                    <td><label>name</label></td>
+                                    <td><input type="text" id="name" onkeyup="validate();"></td>
+                                    <div id="errName"></div>
+                                </tr>
+
+                                <tr>
+                                    <td><label>email</label></td>
+                                    <td><input type="email" id="email" onkeyup="validate();"></td>
+                                    <div id="errMail"></div>
+                                </tr>
+
+                                <tr>
+                                    <td><label>password</label></td>
+                                    <td><input type="password" id="password" onkeyup="validate();"></td>
+                                    <div id="errPassword"></div>
+                                </tr>
+
+                                <tr>
+                                    <td><label>confirm password</label></td>
+                                    <td><input type="password" id="confirmPassword" onkeyup="validate();"></td>
+                                    <div id="errConfirm"></div>
+                                </tr>
+
+                                <tr>
+                                    <td><label>gender</label></td>
+                                    <td><label>male</label><input type="radio"><label>female</label><input type="radio">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><label>country</label></td>
+                                    <td><select>
+                                            <option>Egypt</option>
+                                            <option>Italy</option>
+                                            <option>Switzerland</option>
+                                            <option>Russia</option>
+                                        </select></td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" style="text-align: center"><input type="submit" id="submit"
+                                            onclick="validate(); finalvalidate();"></td>
+                                    <div id="errSubmit"></div>
+
+                                </tr>
+
+                            </table>
+                        </fieldset>
+                    </form>
+                </td>
+                <td>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/6QAELgirvjs"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <ul style="text-align: center;">
+                        <li>
+                            <img src="html5.png">
+                            <br>
+                            <a href="#">html</a>
+                        </li>
+                        <li>
+                            <img src="css1.png">
+                            <br>
+                            <a href="#">css</a>
+                        </li>
+                        <li>
+                            <img src="javascript1.png">
+                            <br>
+                            <a href="#">javascript</a>
+                        </li>
+                        <li>
+                            <img src="bootstrap.png">
+                            <br>
+                            <a href="#">bootstrap</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
